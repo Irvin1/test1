@@ -1,0 +1,25 @@
+<% provide(:title, 'Sign In') %>
+<h1>Sign In</h1>
+
+<% if flash[:notice] %>
+    <div id="notice"><%= flash[:notice] %></div>
+<% end %>
+
+<%= form_for(:session, url: sessions_path) do |f| %>
+
+      <%= f.label :your_mail %></br>
+      <%= f.text_field :email %>
+</br>
+
+</br>
+      <%= f.label :your_password %></br>
+      <%= f.password_field :password %>
+</br>
+
+</br>
+      <%= f.submit "Sign in" %>
+<% end %>
+
+</br>
+<%= link_to "Main Page", index_path %>
+<br />

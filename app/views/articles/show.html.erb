@@ -1,0 +1,24 @@
+<% provide(:title, @article.title) %>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <h2><%= @article.title %></h2>
+</p>
+
+<p>
+  <%= @article.text %>
+</p>
+
+<div class="auth">
+	written by: <%= @article.author %>
+</div>
+<div class="clear"></div>
+
+
+<%= link_to 'Articles', index_path %>
+
+<% if session[:user]==@article.author || session[:admin] %>
+		| <%= link_to "Edit", edit_article_path(@article) %>
+		| <%= link_to "Delete", @article, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+

@@ -1,0 +1,8 @@
+<% provide(:title, 'New article') %>
+<% if session[:user]%>
+<h1>New article</h1>
+<%= render 'form' %>
+<% else %>
+<h2><%= 'You have to sign in first' %></h2>
+<% end %>
+<%= link_to 'Back', index_path %>

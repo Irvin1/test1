@@ -1,0 +1,63 @@
+// Place all the styles related to the MyPages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// Place all the styles related to the Articles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.footer_nav{
+
+	color: #999;
+	p{
+		padding-left:20px;
+		float:left;
+		font-size:20px;
+	}
+	ul {
+		font-size: 15px;
+		float: right;
+		padding-right:30px;
+		list-style: none;
+		li {
+			float: left;
+			margin-left: 15px;
+		}
+	}
+}
+
+.header_links{
+	float:right;
+	margin-right: 25px;
+	font-size: 17px;
+}
+
+.contactContent{
+
+	padding-left:30px;
+	h1{
+		color:#999;
+	}
+	table{
+		tr{
+			td{
+				font-size:15px;
+			}
+		}
+	}
+
+}
+
+.aboutContent{
+
+	padding-left:30px;
+	h1{
+		color:#999;
+	}
+	p{
+		font-size:15px;
+	}
+}
+
+

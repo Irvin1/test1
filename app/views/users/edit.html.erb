@@ -1,0 +1,10 @@
+<% provide(:title, 'Edit profile '+@user.name) %>
+<% if session[:admin] || session[:user] == @user.name %>
+<h1>Editing user</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Main page', index_path %>
+<% else %>
+<h3> You are not authorized </h3>
+<% end %>

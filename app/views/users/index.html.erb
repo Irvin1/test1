@@ -1,0 +1,35 @@
+<% provide(:title, 'Users') %>
+
+<% if session[:admin] %>
+
+<h1>Listing users</h1>
+
+<% @users.each do |user| %>
+
+  <div class="user_entry">
+		<tr><h2><%= link_to user.name, user %></h2></tr>
+		<tr>
+		<%= user.email %>
+		</tr>
+		</br>
+		<tr>Number of articles: <%= User.findNoArticles(user.name) %></tr>
+		</br>
+		<tr><% if user.admin %> Administrator</tr>
+		<% end %>
+		<div class="user_commands">
+		<tr>
+		<td><%= link_to 'Edit', edit_user_path(user) %> |</td>
+		<td><%= link_to 'toggle admin', admin_path(user) %> |</td>
+		<td><%= link_to 'Delete user', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	
+		</tr>
+		
+		</div>
+	</div>
+<% end %>
+
+<br />
+<div class="clear"></div>
+<% else %>
+<h3> You are not authorized </h3>
+<% end %>
