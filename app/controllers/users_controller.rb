@@ -99,11 +99,13 @@ class UsersController < ApplicationController
   end
   
   def makeadmin
+  if session[:admin]
   	@user=User.find(params[:id])
 	@user.toggle!(:admin)
-	respond_to do |format|
-      format.html { redirect_to members_url }
-    end
+		respond_to do |format|
+		  format.html { redirect_to members_url }
+		end
+	end
   end
   
 end

@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>IUS-X | <%= yield(:title) %></title>
+  <%= favicon_link_tag 'favicon.ico' %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -10,7 +11,7 @@
 
 
 <div class="header_img">
-	<%= link_to image_tag("simple_logo.gif", :alt => "Logo", :height => "100px"), index_path %>
+	<%= link_to image_tag("logo.jpg", :alt => "Logo", :height => "150px"), index_path %>
 </div>
 <div class="header_links">
 	<% if session[:admin] %>
