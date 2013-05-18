@@ -22,7 +22,7 @@ STProject::Application.routes.draw do
   match '/members',	to:'users#index'
   match '/articles', to: 'mainnews#index'
   match '/new', 	to:'articles#new'
-  match '/admin.:id',	to:'users#makeadmin'
+  match '/admin',	to:'users#makeadmin'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
