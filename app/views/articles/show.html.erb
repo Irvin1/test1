@@ -46,6 +46,8 @@
 <% end %>
 </br>
 <div class="clear"></div>
+
+<% if session[:user] %>
 <hr>
 <p>
   <h3>Add a comment</h3>
@@ -65,7 +67,6 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :content %><br />
 	<%= f.text_area :content, :rows => 4%>
   </div>
   <%= f.hidden_field :articleid, :value => @article.id %>
@@ -74,3 +75,4 @@
   </div>
 <% end %>
 
+<% end %>

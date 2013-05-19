@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
         format.html { redirect_to @article, notice: 'Comment was successfully added.' }
         format.json { render json: @comment, status: :created, location: @comment }
       else
-        format.html { render :template => "Articles/show", :locals => { :@article => @article, :@comments => Comment.where(:articleid => params[:comment][:articleid])} }
+        format.html { render :template => "articles/show", :locals => { :@article => @article, :@comments => Comment.where(:articleid => params[:comment][:articleid])} }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
