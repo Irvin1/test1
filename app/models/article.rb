@@ -1,5 +1,5 @@
 class Article < ActiveRecord::Base
-  belongs_to :movie
+  belongs_to :user
   
   attr_accessible :title, :author, :text
   validates :title, :text, :presence => true
