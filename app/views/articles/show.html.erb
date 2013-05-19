@@ -10,7 +10,7 @@
 </p>
 
 <div class="auth">
-	written by: <%= @article.author %>
+	written by: <%= link_to @article.author, User.find_by_name(@article.author) %>
 </div>
 <div class="clear"></div>
 

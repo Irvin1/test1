@@ -12,7 +12,7 @@
 		<%end%>
 		</tr>
 		<div class="auth">
-		<tr>written by: <%= article.author %></tr>
+		<tr>written by: <%= link_to article.author, User.find_by_name(article.author) %></tr>
 		</div>
 	</div>
 <% end %>

@@ -4,6 +4,10 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+<%= image_tag(@user.avatar.url, :height => "150px") %>
+</p>
+
+<p>
   <b>Name:</b>
   <%= @user.name %>
 </p>

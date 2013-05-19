@@ -1,7 +1,11 @@
 
-<% if session[:admin] %>
+<% if session[:user] %>
 <% provide(:title, @user.name) %>
 <p id="notice"><%= notice %></p>
+
+<p>
+<%= image_tag(@user.avatar.url, :height => "150px") %>
+</p>
 
 <p>
   <b>Name:</b>
@@ -21,8 +25,10 @@
 
 	<% end %>
 </p>
+<% if session[:user] == @user.name %>
 <%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<% end %>
+<%= link_to 'Main', index_path %>
 
 <% else %>
 <% provide(:title, 'Profile') %>

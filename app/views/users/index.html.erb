@@ -11,15 +11,24 @@
 <% @users.each do |user| %>
 
   <div class="user_entry">
-		<tr><h2><%= link_to user.name, user %></h2></tr>
-		<tr>
-		<%= user.email %>
-		</tr>
-		</br>
-		<tr>Number of articles: <%= User.findNoArticles(user.name) %></tr>
-		</br>
-		<tr><% if user.admin %> Administrator</tr>
-		<% end %>
+		<table>
+			<tr>
+				<td><%= link_to image_tag(user.avatar.url, :height => "150px"), user %></td>
+				<td>
+				<table>
+					<tr><h2><%= link_to user.name, user %></h2></tr>
+					<tr>
+					<%= user.email %>
+					</tr>
+					</br>
+					<tr>Number of articles: <%= User.findNoArticles(user.name) %></tr>
+					</br>
+					<tr><% if user.admin %> Administrator</tr>
+					<% end %>
+				</table>
+				</td>
+			</tr>
+		</table>
 		<div class="user_commands">
 		<tr>
 		<td><%= link_to 'Edit', edit_user_path(user) %> |</td>
