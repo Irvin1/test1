@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
   
   has_attached_file :avatar, :url  => "/assets/avatars/:id/:basename.:extension",
                   :path => ":rails_root/public/assets/avatars/:id/:basename.:extension"
-
+				:default_url => "/assets/avatars/missing.jpg"
+				
   validates_attachment_presence :avatar
   validates_attachment_size :avatar, :less_than => 5.megabytes
   validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/png']
