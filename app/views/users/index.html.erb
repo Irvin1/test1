@@ -23,6 +23,8 @@
 					</br>
 					<tr>Number of articles: <%= User.findNoArticles(user.name) %></tr>
 					</br>
+					<tr>Number of comments: <%= User.findNoComments(user.name) %></tr>
+					</br>
 					<tr><% if user.admin %> Administrator</tr>
 					<% end %>
 				</table>

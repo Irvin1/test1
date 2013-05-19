@@ -1,4 +1,6 @@
 STProject::Application.routes.draw do
+  resources :comments
+
   resources :users
   resources :articles
   get "session/signin"

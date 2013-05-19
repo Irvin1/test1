@@ -17,14 +17,26 @@
   <%= @user.email %>
 </p>
 
-<p>
-  <b>Articles: </b>
+<table>
+<tr>
+<td valign="top">
+  <b>Commented articles: </b>
+  </br>
+    <% @commentedArticles.each do |entry| %>
+		<h4>><%= link_to entry.title, entry %></h4>
+	<% end %>
+</td>
+<td></td><td></td><td></td><td></td><td></td>
+<td valign="top">
+  <b>Written articles: </b>
   </br>
 	<% @articleEntries.each do |entry| %>
 		<h4>><%= link_to entry.title, entry %></h4>
 
 	<% end %>
-</p>
+<td>
+</tr>
+</table>
 <% if session[:user] == @user.name %>
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <% end %>

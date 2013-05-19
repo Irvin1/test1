@@ -2,23 +2,75 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <h2><%= @article.title %></h2>
+  <h1><%= @article.title %></h1>
 </p>
 
 <p>
   <%= @article.text %>
 </p>
 
-<div class="auth">
+<div class="auth2">
 	written by: <%= link_to @article.author, User.find_by_name(@article.author) %>
 </div>
-<div class="clear"></div>
 
-
-<%= link_to 'Articles', index_path %>
 
 <% if session[:user]==@article.author || session[:admin] %>
-		| <%= link_to "Edit", edit_article_path(@article) %>
+		<%= link_to "Edit", edit_article_path(@article) %>
 		| <%= link_to "Delete", @article, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+<div class="clear"></div>
+<hr>
+
+<p>
+  <h3>Comments</h3>
+</p>
+
+<% @comments.each do |c| %>
+	<div class="comm_entry">
+		<div class="comm_img">
+		<%= link_to image_tag(User.find_by_name(c.username).avatar.url, :height => "70px"),User.find_by_name(c.username) %>
+		</div>
+		<div class="comm_name">
+		<%= link_to c.username, User.find_by_name(c.username) %>
+		</div>
+		<div class="comm_content">
+		<%= c.content %>
+		</div>
+		<div class="comm_links">
+		<% if session[:admin] || session[:user]==c.username %>
+		<%= link_to 'Edit', edit_comment_path(c) %> |
+		<%= link_to 'Delete', c, method: :delete, data: { confirm: 'Are you sure?' } %>
+		<% end %>
+		</div>
+	</div>
+<% end %>
+</br>
+<div class="clear"></div>
+<hr>
+<p>
+  <h3>Add a comment</h3>
+</p>
+
+<%= form_for(@comment) do |f| %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+      <% @comment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :content %><br />
+	<%= f.text_area :content, :rows => 4%>
+  </div>
+  <%= f.hidden_field :articleid, :value => @article.id %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
 <% end %>
 

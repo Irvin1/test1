@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :articles, foreign_key: "author", dependent: :destroy, primary_key:"name"
+  has_many :comments, foreign_key: "username", dependent: :destroy
   has_secure_password
   attr_accessible :email, :name, :password, :password_confirmation, :admin, :avatar
   
@@ -21,5 +22,8 @@ class User < ActiveRecord::Base
 	return Article.count(:conditions => ["author = ?", username])
   end
   
+  def self.findNoComments(username)
+	return Comment.count(:conditions => ["username = ?", username])
+  end
 
 end

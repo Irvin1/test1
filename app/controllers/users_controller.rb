@@ -16,6 +16,9 @@ class UsersController < ApplicationController
   def show
 	@user = User.find(params[:id])
 	@articleEntries = Article.where(:author => @user.name)
+	userComments = Comment.where(:username => @user.name).pluck(:articleid)
+	@commentedArticles = Article.find(userComments)
+	
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }
@@ -81,7 +84,7 @@ class UsersController < ApplicationController
 	if @user.admin && adminCount == 1
 		flash[:notice] = "Can't delete last admin"
 	else
-		@user.destroy		
+		@user.destroy	
 	end
 
     respond_to do |format|
@@ -100,6 +103,8 @@ class UsersController < ApplicationController
 	if session[:user]
 		@user=User.find_by_name(session[:user])
 		@articleEntries = Article.where(:author => @user.name)
+		userComments = Comment.where(:username => @user.name).pluck(:articleid)
+		@commentedArticles = Article.find(userComments)
 	end
 	
 	respond_to do |format|

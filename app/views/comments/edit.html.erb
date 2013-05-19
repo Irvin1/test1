@@ -1,0 +1,11 @@
+<% provide(:title, 'Edit comment ') %>
+<% if session[:admin] || session[:user] == @comment.username %>
+
+<h1>Editing comment</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Main', index_path %>
+<% else %>
+<h3> You are not authorized </h3>
+<% end %>
