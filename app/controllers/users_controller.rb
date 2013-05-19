@@ -86,6 +86,12 @@ class UsersController < ApplicationController
     end
   end
   
+  def admin
+		format.html { redirect_to memebers_url }
+		format.json { head :no_content }
+
+  end
+  
   def current
 	if session[:user]
 		@user=User.find_by_name(session[:user])
@@ -99,13 +105,13 @@ class UsersController < ApplicationController
   end
   
   def makeadmin
-  if session[:admin]
-  	@user=User.find(params[:id])
-	@user.toggle!(:admin)
-		respond_to do |format|
-		  format.html { redirect_to members_url }
-		end
-	end
+	  if session[:admin]
+
+		@user=User.find(params[:format])
+		@user.toggle!(:admin)
+			redirect_to members_url
+
+	  end
   end
   
 end
