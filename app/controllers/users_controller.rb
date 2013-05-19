@@ -109,13 +109,17 @@ class UsersController < ApplicationController
   end
   
   def makeadmin
-	  if session[:admin]
+	if session[:admin]
 
 		@user=User.find(params[:format])
-		@user.toggle!(:admin)
+		adminCount = User.count(:conditions => ["admin = ?", true])
+		if @user.admin && adminCount == 1
+			flash[:notice] = "Can't change last admin"
+		else
+			@user.toggle!(:admin)	
+		end
 			redirect_to members_url
-
-	  end
+	end
   end
   
 end
