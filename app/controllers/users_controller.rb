@@ -77,11 +77,15 @@ class UsersController < ApplicationController
 	if @user.name == session[:name]	
 		reset_session
 	end
-	
-    @user.destroy
+	adminCount = User.count(:conditions => ["admin = ?", true])
+	if @user.admin && adminCount == 1
+		flash[:notice] = "Can't delete last admin"
+	else
+		@user.destroy		
+	end
 
     respond_to do |format|
-      format.html { redirect_to index_url }
+      format.html { redirect_to members_url }
       format.json { head :no_content }
     end
   end
