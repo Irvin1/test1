@@ -1,4 +1,5 @@
 class Article < ActiveRecord::Base
+  default_scope :order => "id ASC"
   has_many :comments, foreign_key: "articleid", dependent: :destroy
   belongs_to :user
   
