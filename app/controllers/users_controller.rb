@@ -62,8 +62,18 @@ class UsersController < ApplicationController
   # PUT /users/1.json
   def update
     @user = User.find(params[:id])
+	@articles = Article.where(:author => @user.name)
+	@comments = Comment.where(:username => @user.name)
     respond_to do |format|
       if @user.update_attributes(params[:user])
+		@articles.each do |aa|
+			aa.author=params[:user][:name]
+			aa.save
+		end
+		@comments.each do |cc|
+			cc.username=params[:user][:name]
+			cc.save
+		end
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
