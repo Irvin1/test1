@@ -30,7 +30,7 @@
 	overflow:hidden;
 	font-size:20px;
 }
-.txt_entry{
+.imgandtxt_entry{
 	position:absolute;
 	top:65px;
 	bottom:40px;
@@ -39,7 +39,10 @@
 	font-size:15px;
 	overflow:hidden;
 }
-
+.artimg_entry{
+float:left;
+margin-right:10px;
+}
 .auth{
 	position:absolute; 
 	bottom:0;

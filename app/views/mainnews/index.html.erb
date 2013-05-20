@@ -8,10 +8,13 @@
 		<div class="title_entry">
 		<tr><h2><%= link_to article.title, article %></h2></tr>
 		</div>
-		<div class="txt_entry">
+		<div class="imgandtxt_entry">
+		<div class="artimg_entry">
+		<%= image_tag(article.artimg.url, :height => "150px", :width => "150px") %>
+		</div>
 		<tr>		
-		<%if article.text.length<1700 %>		<%=article.text%>
-		<%else%>	<%= article.text[0..1700] %> <%=link_to('...', article) %>
+		<%if article.text.length<1400 %>		<%=article.text%>
+		<%else%>	<%= article.text[0..1400] %> <%=link_to('...', article) %>
 		<%end%>
 		</tr>
 		</div>
