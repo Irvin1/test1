@@ -2,7 +2,7 @@
 <% if session[:admin] || session[:user] == @user.name %>
 <h1>Editing user</h1>
 
-<%= render 'form' %>
+<%= render 'formedit' %>
 
 <%= link_to 'Main page', index_path %>
 <% else %>
