@@ -12,9 +12,10 @@ class User < ActiveRecord::Base
   validates_attachment_size :avatar, :less_than => 5.megabytes
   validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/png']
   
-  validates :name, :email, :presence => true
+  validates :email, :presence => true
   validates :email, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create }
   validates :name, :email, :uniqueness => true
+  validates :name, presence: true, length: {minimum: 3, maximum: 9}
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
   
