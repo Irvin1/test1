@@ -1,4 +1,9 @@
 STProject::Application.routes.draw do
+  
+
+  match 'categories/:id' => 'mainnews#filtered', :via => :get
+  resources :categories
+
   resources :comments
 
   resources :users
@@ -25,6 +30,7 @@ STProject::Application.routes.draw do
   match '/articles', to: 'mainnews#index'
   match '/new', 	to:'articles#new'
   match '/admin',	to:'users#makeadmin'
+
   #match '/admin.:id',	to:'users#makeadmin'
   # The priority is based upon order of creation:
   # first created -> highest priority.

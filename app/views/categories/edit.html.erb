@@ -1,0 +1,11 @@
+<% provide(:title, "Edit "+@category.name) %>
+<% if session[:admin] %>
+
+<h1>Editing category</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', categories_path %>
+<% else %>
+<h1>You are not authorized</h1>
+<% end %>

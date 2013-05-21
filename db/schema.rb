@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130520221548) do
+ActiveRecord::Schema.define(:version => 20130521163347) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -23,6 +23,19 @@ ActiveRecord::Schema.define(:version => 20130520221548) do
     t.string   "artimg_content_type"
     t.integer  "artimg_file_size"
     t.datetime "artimg_updated_at"
+  end
+
+  create_table "articles_categories", :id => false, :force => true do |t|
+    t.integer "article_id"
+    t.integer "category_id"
+  end
+
+  add_index "articles_categories", ["article_id", "category_id"], :name => "index_articles_categories_on_article_id_and_category_id"
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "comments", :force => true do |t|

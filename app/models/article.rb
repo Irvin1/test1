@@ -2,6 +2,7 @@ class Article < ActiveRecord::Base
   default_scope :order => "id ASC"
   has_many :comments, foreign_key: "articleid", dependent: :destroy
   belongs_to :user
+  has_and_belongs_to_many :categories
   
   attr_accessible :title, :author, :text, :artimg
   has_attached_file :artimg, :url  => "/assets/articleimgs/:id/:basename.:extension",

@@ -23,6 +23,18 @@
 	<%= f.label :Choose_an_image_for_article %><br />
 	<%= f.file_field :artimg %>
   </div>
+  <div>
+  <% @categories.each do |cat| %>
+      <li>
+		<% if @article.categories.include?(Category.find(cat.id)) %>
+        <%= check_box_tag 'cat_ids[]', cat.id, true %>
+		<%else %>
+		<%= check_box_tag 'cat_ids[]', cat.id %>
+		<% end %>
+        <%= cat.name %>
+      </li>
+  <% end %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -1,0 +1,50 @@
+<% provide(:title, 'Categories administration') %>
+<% if session[:admin] %>
+
+<h1>Categories</h1>
+
+<% if notice %>
+	<div id="notice"><%= notice %></div>
+	</br>
+<% end %>
+
+<% @categories.each do |category| %>
+  <tr>
+    <td><b>>><%= category.name %></b></td>
+	</br>
+    <td><%= link_to 'Edit', edit_category_path(category) %> | </td>
+    <td><%= link_to 'Delete', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	</br>
+	</br>
+  </tr>
+<% end %>
+</table>
+
+
+<hr>
+<h1>New category</h1>
+
+<%= form_for(@category) do |f| %>
+  <% if @category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h2>
+
+      <ul>
+      <% @category.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<% else %>
+<h1>You are not authorized</h1>
+<% end %>

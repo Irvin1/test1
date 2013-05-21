@@ -3,6 +3,7 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
     @articles = Article.all
+	
     respond_to do |format|
       format.html { redirect_to index_path }
       format.json { render json: @articles }
@@ -25,7 +26,7 @@ class ArticlesController < ApplicationController
   # GET /articles/new.json
   def new
     @article = Article.new
-
+	@categories = Category.all
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @article }
@@ -35,6 +36,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1/edit
   def edit
     @article = Article.find(params[:id])
+	@categories = Category.all
   end
 
   # POST /articles
@@ -42,8 +44,19 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(params[:article])
 	@article.author = session[:user]
+	@categories = Category.all
+	
+	if !params[:cat_ids]
+		params[:cat_ids] = []
+	end
+	cats=[]
+	params[:cat_ids].each do |cc|
+		cats.push(Category.find(cc.to_i))
+	end
+	@article.categories = cats
+	
     respond_to do |format|
-      if @article.save
+      if @article.save && 
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
         format.json { render json: @article, status: :created, location: @article }
       else
@@ -57,7 +70,17 @@ class ArticlesController < ApplicationController
   # PUT /articles/1.json
   def update
     @article = Article.find(params[:id])
-
+	@categories = Category.all
+	
+	if !params[:cat_ids]
+		params[:cat_ids] = []
+	end
+	cats=[]
+	params[:cat_ids].each do |cc|
+		cats.push(Category.find(cc.to_i))
+	end
+	@article.categories = cats
+	
     respond_to do |format|
       if @article.update_attributes(params[:article])
         format.html { redirect_to @article, notice: 'Article was successfully updated.' }

@@ -1,6 +1,10 @@
 <% provide(:title, 'News Site') %>
 <div class="articleContent">
-<h1><%=link_to('Articles', index_path) %></h1>
+<h1><%=link_to('All', index_path) %>
+<% @categories.each do |cc| %> 
+	| <%=link_to(cc.name, cc) %>
+<% end %>
+</h1>
 <hr>
 
 <% @articles.each do |article| %>

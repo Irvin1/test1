@@ -15,6 +15,7 @@
 </div>
 <div class="header_links">
 	<% if session[:admin] %>
+		<%= link_to "Categories administration", categories_path %> |
 		<%= link_to "Users", members_path %> |
 	<% end %>
 	<% if session[:user] %>

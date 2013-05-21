@@ -8,7 +8,17 @@
 <p>
   <%= @article.text %>
 </p>
+<p>
+<b>Categories:</b> 
+<% if !@article.categories.empty? %>
+<% @article.categories.each do |catt| %>
+	<%= link_to catt.name, category_path(catt) %> 
+<% end %>
+<% else %>
+None
+<% end %>
 
+</p>
 <div class="auth2">
 	written by: <%= link_to @article.author, User.find_by_name(@article.author) %>
 </div>
