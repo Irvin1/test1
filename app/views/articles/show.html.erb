@@ -34,7 +34,7 @@
 		<%= link_to c.username, User.find_by_name(c.username) %>
 		</div>
 		<div class="comm_content">
-		<b><%= c.content %></b>
+		<b><%= c.content.gsub( "xD", '<img src="http://localhost:3000/assets/xd.png" height="15" width="15">' ).gsub( ":D", '<img src="http://localhost:3000/assets/happy.png" height="15" width="15">' ).gsub( ":(", '<img src="http://localhost:3000/assets/sad.png" height="15" width="15">' ).html_safe %></b>
 		</div>
 		<div class="comm_links">
 		<% if session[:admin] || session[:user]==c.username %>
@@ -68,7 +68,7 @@
   <% end %>
 
   <div class="field">
-	<%= f.text_area :content, :rows => 4%>
+	<%= f.text_area :content, :rows => 4 %>
   </div>
   <%= f.hidden_field :articleid, :value => @article.id %>
   <div class="actions">
