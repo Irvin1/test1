@@ -21,9 +21,9 @@
   </div>
   <div class="field">
 	<%= f.label :Choose_your_avatar %><br />
-	<%= f.file_field :avatar %>
+	<%= f.file_field :avatar ,:class => "browse_button"%>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Save Changes", :class => "submit_button"%>
   </div>
 <% end %>

@@ -1,22 +1,25 @@
 <% provide(:title, @article.title) %>
+<div class="articleshow">
 <p id="notice"><%= notice %></p>
 
 <p>
   <h1><%= @article.title %></h1>
 </p>
 <%= image_tag(@article.artimg.url, :height => "150px", :width => "150px") %>
-<p>
+<div class="txt">
   <%= @article.text %>
-</p>
+</div>
 <p>
 <b>Categories:</b> 
+<ul>
 <% if !@article.categories.empty? %>
 <% @article.categories.each do |catt| %>
-	<%= link_to catt.name, category_path(catt) %> 
+	<li><%= link_to catt.name, category_path(catt) %> </li>
 <% end %>
 <% else %>
-None
+<li><%= link_to "None", index_path %></li>
 <% end %>
+</ul>
 
 </p>
 <div class="auth2">
@@ -44,7 +47,7 @@ None
 		<%= link_to c.username, User.find_by_name(c.username) %>
 		</div>
 		<div class="comm_content">
-		<b><%= c.content.gsub( "xD", '<img src="http://'+request.host_with_port+'/assets/xd.png" height="15" width="15">' ).gsub( ":D", '<img src="http://'+request.host_with_port+'/assets/happy.png" height="15" width="15">' ).gsub( ":(", '<img src="http://'+request.host_with_port+'/assets/sad.png" height="15" width="15">' ).html_safe %></b>
+		<b><%= c.content %></b>
 		</div>
 		<div class="comm_links">
 		<% if session[:admin] || session[:user]==c.username %>
@@ -82,8 +85,9 @@ None
   </div>
   <%= f.hidden_field :articleid, :value => @article.id %>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Add Comment", :class => "submit_button"%>
   </div>
 <% end %>
 
 <% end %>
+</div>

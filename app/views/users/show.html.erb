@@ -1,6 +1,7 @@
 
 <% if session[:user] %>
 <% provide(:title, @user.name) %>
+<div class="usershow">
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -37,11 +38,13 @@
 <td>
 </tr>
 </table>
-<% if session[:user] == @user.name %>
-<%= link_to 'Edit', edit_user_path(@user) %> |
+<div class="links">
+<% if session[:user] == @user.name ||session[:admin]%>
+<%= link_to 'Edit', edit_user_path(@user) %>
 <% end %>
 <%= link_to 'Main', index_path %>
-
+</div>
+</div>
 <% else %>
 <% provide(:title, 'Profile') %>
 <h3> You are not authorized </h3>

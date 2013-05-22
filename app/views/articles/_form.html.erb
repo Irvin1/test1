@@ -27,15 +27,16 @@
   <% @categories.each do |cat| %>
       <li>
 		<% if @article.categories.include?(Category.find(cat.id)) %>
-        <%= check_box_tag 'cat_ids[]', cat.id, true %>
+        <%= check_box_tag 'cat_ids[]', cat.id, true, :class => 'formbox' %>
 		<%else %>
-		<%= check_box_tag 'cat_ids[]', cat.id %>
+		<%= check_box_tag 'cat_ids[]', cat.id, false, :class => 'formbox'%>
 		<% end %>
         <%= cat.name %>
       </li>
   <% end %>
   </div>
+  </br>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Submit", :class => "submit_button"%>
   </div>
 <% end %>

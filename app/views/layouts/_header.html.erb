@@ -9,31 +9,43 @@
 </head>
 <body>
 
-
+<div class="header_bar">
 <div class="header_img">
 	<%= link_to image_tag("logo.jpg", :alt => "Logo", :height => "150px"), index_path %>
 </div>
-<div class="header_links">
+
 	<% if session[:admin] %>
-		<%= link_to "Categories administration", categories_path %> |
-		<%= link_to "Users", members_path %> |
-	<% end %>
-	<% if session[:user] %>
-		<%= link_to "Add new article", new_path %> |
-		<%= link_to "Profile("+session[:user]+")", profile_path %> |
+	<div class="header_links">
+		<%= link_to "Categories administration", categories_path %>
+		<%= link_to "Users", members_path %>
+		<%= link_to "Add new article", new_path %>
+		<%= link_to "Profile("+session[:user]+")", profile_path %>
 		<%= link_to "Logout", logout_path %>
+	</div>
+	<% elsif session[:user] %>
+	<div class="header_links">
+		<%= link_to "Add new article", new_path %>
+		<%= link_to "Profile("+session[:user]+")", profile_path %>
+		<%= link_to "Logout", logout_path %>
+	</div>
 	<% else %>
-		<%= form_for(:session, url: sessions_path, :html => { :style => 'display:inline; font-size:17px;' }) do |f| %>
+	<div class="header_links">
+	  <%= link_to "Register", register_path %>
+	</div>
+	<div class="login_form">
+	  <%= form_for(:session, url: sessions_path) do |f| %>
 
       <%= f.label :mail %>
       <%= f.text_field :email, :size => 20, :class => "singin_input" %>
       <%= f.label :password %>
       <%= f.password_field :password, :size => 20, :class => "singin_input" %>
 
-      <%= f.submit "Sign in" %>
+      <%= f.submit "Sign in", :class => "submit_button" %>
+	  
 	  <% end %>
-	  or <%= link_to "Register", register_path %>
+	</div>
 	<% end %>
+
 </div>
 <div class="clear"></div>
 <hr>

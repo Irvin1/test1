@@ -9,16 +9,17 @@
 <% end %>
 
 <% @categories.each do |category| %>
+<div class="catList">
   <tr>
     <td><b>>><%= category.name %></b></td>
 	</br>
     <td><%= link_to 'Edit', edit_category_path(category) %> | </td>
     <td><%= link_to 'Delete', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 	</br>
-	</br>
   </tr>
+</div>
 <% end %>
-</table>
+
 
 
 <hr>
@@ -42,7 +43,7 @@
     <%= f.text_field :name %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Save Changes", :class => "submit_button"%>
   </div>
 <% end %>
 <% else %>

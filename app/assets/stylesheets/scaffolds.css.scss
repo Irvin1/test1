@@ -19,14 +19,12 @@ pre {
 }
 
 a {
-  color: #000;
-  &:visited {
-    color: #666;
-  }
-  &:hover {
-    color: #fff;
-    background-color: #000;
-  }
+  color: #fff;
+  text-decoration:none;
+
+}
+a:hover{
+	color: #000;
 }
 
 div {
@@ -43,6 +41,19 @@ div {
   padding: 2px;
   background-color: red;
   display: table;
+}
+label{
+	font-size: 17px;
+}
+.submit_button{
+	background: #4169E1;
+	height:40px;
+	border:none;
+    color: white;
+	font-size:17px;
+}
+.submit_button:hover{
+	color: black;
 }
 
 #error_explanation {

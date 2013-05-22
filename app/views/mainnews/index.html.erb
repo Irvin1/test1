@@ -1,12 +1,17 @@
 <% provide(:title, 'News Site') %>
-<div class="articleContent">
-<h1><%=link_to('All', index_path) %>
-<% @categories.each do |cc| %> 
-	| <%=link_to(cc.name, cc) %>
-<% end %>
-</h1>
-<hr>
 
+<div class="filter">
+<ul>
+	<li><%=link_to('All', index_path) %></li>
+<% @categories.each do |cc| %> 
+	<li><%=link_to(cc.name, cc) %></li>
+<% end %>
+</ul>
+<div class="clear"></div>
+</div>
+
+<hr>
+<div class="articleContent">
 <% @articles.each do |article| %>
 	<div class="art_entry">
 		<div class="title_entry">

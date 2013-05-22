@@ -8,30 +8,66 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .footer_nav{
-
+	
 	color: #999;
 	p{
 		padding-left:20px;
 		float:left;
 		font-size:20px;
+		
 	}
 	ul {
+		background-color:#2d89ef;
 		font-size: 15px;
 		float: right;
 		padding-right:30px;
 		list-style: none;
 		li {
 			float: left;
-			margin-left: 15px;
+			height:40px;
+			a {
+			  vertical-align:middle;
+			  margin:5px;
+			  padding-top:15px;
+
+			  padding-left:20px;
+			  padding-right:20px;
+			  text-decoration:none;
+			}
 		}
 	}
 }
 
-.header_links{
-	float:right;
-	margin-right: 25px;
-	font-size: 17px;
+.header_img{
+	float:left;
+	a{
+		background-color:white;
+	}
 }
+.login_form{
+	float:right;
+	margin-top: 110px;
+	margin-right: 10px;
+	
+	
+}
+
+.header_links{
+	height:40px;
+	background-color:#2d89ef;
+	float:right;
+	margin-top: 110px;
+	font-size: 17px;
+	a {
+		  vertical-align:middle;
+		  margin:0px;
+		  padding-top:17px;
+		  padding-left:20px;
+		  padding-right:20px;
+		  text-decoration:none;
+	}
+}
+
 
 .contactContent{
 

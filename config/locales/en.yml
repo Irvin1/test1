@@ -4,9 +4,6 @@
 en:
   helpers:
     submit:
-      user:
-        create: "Register"
-        update: "Save changes"
       comment:
         create: "Add comment"
         update: "Save changes"

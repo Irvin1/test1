@@ -1,6 +1,6 @@
 <% provide(:title, @user.name) %>
 <% if session[:user] %>
-
+<div class="usershow">
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -37,9 +37,11 @@
 <td>
 </tr>
 </table>
-<%= link_to 'Edit', edit_user_path(@user) %> |
+<div class="links">
+<%= link_to 'Edit', edit_user_path(@user) %>
 <%= link_to 'Back', index_path %>
-
+</div>
+</div>
 <% else %>
 <h3> You are not logged in </h3>
 <% end %>

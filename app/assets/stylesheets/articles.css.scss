@@ -3,21 +3,52 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .articleContent{
-
-
+	
 	padding:20px;
+}
+
+.filter{
+	padding-top:5px;
+	padding-bottom:5px;
+
+	ul {
+		margin:0px;
+		padding:0px;
+		font-size:25px;
+		list-style: none;
+		display: inline-block;
+		li {
+			background-color:#2d89ef;
+			float: left;
+			height:40px;
+			margin-left:5px;
+			margin-right:5px;
+			a {
+			  vertical-align:middle;
+			  margin:5px;
+			  padding-top:15px;
+			  padding-left:15px;
+			  padding-right:15px;
+			  text-decoration:none;
+			}
+		}
+		li:hover{
+			transform:scale(1.3)
+
+		}
+	}
 }
 
 .art_entry{
 	position:relative;
+	background-color:#094AB2;
+	color:white;
 	width:45%;
 	height:250px;
 	box-shadow: 10px 10px 5px #888888;
 	float:left;
 	padding:10px;
 	margin:10px;
-	border:1px solid;
-	border-radius:20px;
 }
 .art_entry:hover{
 	width:45%;
@@ -25,7 +56,9 @@
 }
 .title_entry{
 	position:absolute;
-	height:50px;
+	top:0;
+	margin:0px;
+	height:55px;
 	word-break:break-all;
 	overflow:hidden;
 	font-size:20px;
@@ -38,6 +71,7 @@
 	word-break:break-all;
 	font-size:15px;
 	overflow:hidden;
+
 }
 .artimg_entry{
 	float:left;
@@ -58,18 +92,63 @@
 	font-size:15px;
 	padding-bottom:20px;
 }
+.articleshow{
+	ul {
+		margin:0px;
+		padding:0px;
+		list-style: none;
+		display: inline-block;
+		li {
+			float:left;
+			background-color:#094AB2;
+			height:40px;
+			margin-left:5px;
+			margin-right:5px;
+			a {
+			  vertical-align:middle;
+			  margin:5px;
+			  padding-top:15px;
+			  padding-left:15px;
+			  padding-right:15px;
+			  text-decoration:none;
+			  background-color:transparent;
+			}
+		}
+		li:hover{
+			transform:scale(1.3)
+
+		}
+	}
+	
+	a{
+		background-color:#2d89ef;
+	}
+	.txt{
+		background-color:#094AB2;
+		color:white;
+		padding:10px;
+		margin-right:10px;
+	}
+}
 .auth2{
 	font-size:15px;
 	float:right;
 }
 
 .comm_entry{
+	width:50%;
 	position:relative;
-	border-bottom: 2px dotted #0000FF;
+	border: 2px solid #094AB2;
 	height:90px;
+	a{
+		color:#191970;
+		background-color:transparent;
+	}
+	
 }
 .comm_img{
 	position:absolute;
+	top:5px;
 	left:5px;
 	width:75px;
 	
@@ -84,6 +163,7 @@
 	overflow:hidden;
 }
 .comm_content{
+	
 	position:absolute;
 	top:5px;
 	left:90px;
@@ -101,3 +181,4 @@
 .clear { 
 	clear:both; 
 }
+
