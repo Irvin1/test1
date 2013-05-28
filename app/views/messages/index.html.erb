@@ -1,0 +1,32 @@
+<% provide(:title, "Inbox") %>
+<% if session[:user] %>
+<h1>Conversations</h1>
+
+
+<div>
+<% @threads.each do |name| %>
+
+	<% if Message.unread(name,session[:user]) %>
+	<div class="conv_thread" style="background-color:#094AB2;">
+	
+	<% else %>
+	<div class="conv_thread" style="background-color:#2d89ef;">
+	<% end %>
+	
+	<% user=User.find_by_name(name) %>
+	<div class="usr_img"><%= link_to image_tag(user.avatar.url, :height => "80px", :width => "80px"), user %></div>
+	<div class="thread_link"><%= link_to name, :controller => "messages", :action => "conversation", :thread_name => name  %></div>
+	<% if Message.unread(name,session[:user]) %>
+	<% end %>
+	<div class="delete_link"><%= link_to 'Delete conversation', 'messages/conversation/'+name, method: :delete %></div>
+	</div>
+<% end %>
+</div>
+<div class="clear"></div>
+<br />
+<div class="links">
+<%= link_to 'New Message', new_message_path %>
+</div>
+<% else %>
+<h3> You are not logged in </h3>
+<% end %>

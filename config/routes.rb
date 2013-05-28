@@ -1,6 +1,8 @@
 STProject::Application.routes.draw do
   
 
+  
+
   match 'categories/:id' => 'mainnews#filtered', :via => :get
   resources :categories
 
@@ -30,7 +32,12 @@ STProject::Application.routes.draw do
   match '/articles', to: 'mainnews#index'
   match '/new', 	to:'articles#new'
   match '/admin',	to:'users#makeadmin'
-
+  match '/inbox',	to:'messages#index'
+  match '/messages/conversation/:thread_name', 	to:'messages#deletethread', :via => :delete
+  match '/messages/conversation/:thread_name',	to:'messages#conversation'
+  
+  resources :messages
+  #match '/messages/deleteThread/:thread_name',	to:'messages#deleteThread'
   #match '/admin.:id',	to:'users#makeadmin'
   # The priority is based upon order of creation:
   # first created -> highest priority.

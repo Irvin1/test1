@@ -1,0 +1,62 @@
+// Place all the styles related to the messages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.conv_thread{
+
+	background-color:#094AB2;
+	width:300px;
+	height:80px;
+	padding:10px;
+	margin:5px;
+	overflow:hidden;
+	float:left;
+
+	.usr_img{
+		position:relative;
+	}
+	.thread_link{
+		position:relative;
+		left:90px;
+		top:-80px;
+		a {
+			font-weight:bold;
+			font-size:20px;
+		}
+	}
+
+	.delete_link{
+		position:relative;
+		left:90px;
+		top:-40px;
+		color:white;
+	}
+
+	
+}
+.links{
+		a{
+			background-color:#2d89ef;
+			margin:5px;
+		}
+	}
+
+.thread_message_bg{
+width:400px;
+height:50px;
+margin:10px;
+overflow:hidden;
+	.message_img{
+		float:left;
+		
+		width:60px;
+	}
+	.message_content{
+		
+		float:left;
+		color:white;
+		font-size:15px;
+
+	}
+}

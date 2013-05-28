@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   default_scope :order => "id ASC"
   has_many :articles, foreign_key: "author", dependent: :destroy, primary_key:"name"
   has_many :comments, foreign_key: "username", dependent: :destroy, primary_key:"name"
+  has_many :messages, foreign_key: "sender_name", dependent: :destroy, primary_key:"name"
+  has_many :messages, foreign_key: "receiver_name", dependent: :destroy, primary_key:"name"
   has_secure_password
   attr_accessible :email, :name, :password, :password_confirmation, :admin, :avatar
   

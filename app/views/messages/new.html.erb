@@ -1,0 +1,12 @@
+<% provide(:title, "New message") %>
+<% if session[:user] %>
+<h1>New message</h1>
+
+<%= render 'form' %>
+
+<div class="link_bg" style="background-color:#2d89ef;width:35px;padding:1px;">
+	<%= link_to 'Back', messages_path %>
+</div>
+<% else %>
+<h3> You are not logged in </h3>
+<% end %>

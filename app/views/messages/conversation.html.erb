@@ -1,0 +1,57 @@
+<% provide(:title, params[:thread_name]+" conversation") %>
+<% if session[:user] %>
+<h1>Conversations</h1>
+
+
+<div class="thread_messages_list">
+<% @messages.each do |m| %>
+<% if m.read %>
+<div class="thread_message_bg" style="background-color:#2d89ef">
+<% else %>
+<div class="thread_message_bg" style="background-color:#094AB2;">
+	<% m.receiver_name == session[:user] ? m.toggle!(:read) : nil %>
+<% end %>
+
+<div class="message_img">
+	<%= link_to image_tag(User.find_by_name(m.sender_name).avatar.url, :height => "50px", :width => "50px"), User.find_by_name(m.sender_name) %> 
+</div>
+<div class="message_content">
+	<%= m.content %>
+</div>
+</div>
+
+
+<% end %>
+</div>
+<div class="clear"></div>
+<br />
+</hr>
+
+<%= form_for(@message) do |f| %>
+  <% if @message.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
+
+      <ul>
+      <% @message.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.hidden_field :receiver_name, :value => params[:thread_name] %>
+   
+  <div class="field">
+    <%= f.label :message %><br />
+    <%= f.text_area :content, :rows => 6%>
+  </div>
+
+	<%= f.hidden_field :sender_name, :value => session[:user] %>
+  <div class="actions">
+    <%= f.submit "Send", :class => "submit_button" %>
+  </div>
+<% end %>
+
+<% else %>
+<h3> You are not logged in </h3>
+<% end %>
