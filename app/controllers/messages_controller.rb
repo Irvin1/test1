@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
   # GET /messages.json
   def index
 	@messages = Message.all
-    senders = Message.where("receiver_name = ? ", session[:user]).uniq.pluck(:sender_name)
+  senders = Message.where("receiver_name = ? ", session[:user]).uniq.pluck(:sender_name)
 	receivers = Message.where("sender_name = ? ", session[:user]).uniq.pluck(:receiver_name)
 	@threads = (senders + receivers).uniq
 	@users = User.all
@@ -60,11 +60,15 @@ class MessagesController < ApplicationController
 	thread = params[:thread_name]
   @message = Message.new
   @messages = Message.where("sender_name = ? AND receiver_name = ? OR sender_name = ? AND receiver_name = ?", session[:user], params[:thread_name], params[:thread_name], session[:user]).reorder('created_at ASC')
-	#@sender = User.find_by_name(thread)
-  #@receiver = User.find_by_name(user)
   respond_to do |format|
+    if User.find_by_name(thread)
       format.html 
       format.json { head :no_content }
+    else
+      format.html { redirect_to inbox_path }
+      format.json { head :no_content }
+    end
+      
     end
   end
   

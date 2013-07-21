@@ -21,7 +21,8 @@ class User < ActiveRecord::Base
   validates :name, presence: true, length: {minimum: 3, maximum: 9}
   validates :password, presence: true, length: { minimum: 6 } , :on => :create
   validates :password_confirmation, presence: true , :on => :create
-  
+
+
   def self.findNoArticles(username)
 	return Article.count(:conditions => ["author = ?", username])
   end

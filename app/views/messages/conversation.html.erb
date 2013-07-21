@@ -15,8 +15,15 @@
 <div class="message_img">
 	<%= link_to image_tag(User.find_by_name(m.sender_name).avatar.url, :height => "50px", :width => "50px"), User.find_by_name(m.sender_name) %> 
 </div>
+<div class="sender_name">
+  <%= link_to m.sender_name+":", User.find_by_name(m.sender_name) %> 
+</div>
 <div class="message_content">
 	<%= m.content %>
+</div>
+</br>
+<div class="message_timestamp">
+  <%= m.created_at %>
 </div>
 </div>
 

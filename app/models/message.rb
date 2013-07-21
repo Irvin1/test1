@@ -6,7 +6,7 @@ class Message < ActiveRecord::Base
   
   validates :receiver_name, :content, :presence => true
   
-  validates :content, length: {minimum: 3, maximum: 400}
+  validates :content, length: {minimum: 3, maximum: 35}
   validate :receiver_exists
   validate :receiver_not_self
   

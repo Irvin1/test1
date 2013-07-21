@@ -44,9 +44,15 @@
 
 .thread_message_bg{
 width:400px;
-height:50px;
+height:55px;
 margin:10px;
 overflow:hidden;
+.sender_name{
+	font-weight:bold;
+			font-size:10px;
+			color:white;
+
+}
 	.message_img{
 		float:left;
 		
@@ -55,8 +61,13 @@ overflow:hidden;
 	.message_content{
 		
 		float:left;
-		color:white;
+		color:#E6E6E6;
 		font-size:15px;
+		height:15px;
+
+	}
+	.message_timestamp{
+		color:black;
 
 	}
 }

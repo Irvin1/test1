@@ -18,7 +18,7 @@
 	<div class="thread_link"><%= link_to name, :controller => "messages", :action => "conversation", :thread_name => name  %></div>
 	<% if Message.unread(name,session[:user]) %>
 	<% end %>
-	<div class="delete_link"><%= link_to 'Delete conversation', 'messages/conversation/'+name, method: :delete %></div>
+	<div class="delete_link"><%= link_to 'Delete conversation', 'messages/'+name, method: :delete %></div>
 	</div>
 <% end %>
 </div>

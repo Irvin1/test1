@@ -33,10 +33,15 @@ STProject::Application.routes.draw do
   match '/new', 	to:'articles#new'
   match '/admin',	to:'users#makeadmin'
   match '/inbox',	to:'messages#index'
-  match '/messages/conversation/:thread_name', 	to:'messages#deletethread', :via => :delete
-  match '/messages/conversation/:thread_name',	to:'messages#conversation'
+  match '/messages/', to:'messages#index', :via => :get
+  match '/messages/',  to:'messages#create', :via => :post
+  match '/messages/new', to:'messages#new'
+  match '/new_message', to:'messages#new'
+  match '/messages/:thread_name', 	to:'messages#deletethread', :via => :delete
+  match '/messages/:thread_name',	to:'messages#conversation'
+
   
-  resources :messages
+  #resources :messages
   #match '/messages/deleteThread/:thread_name',	to:'messages#deleteThread'
   #match '/admin.:id',	to:'users#makeadmin'
   # The priority is based upon order of creation:
